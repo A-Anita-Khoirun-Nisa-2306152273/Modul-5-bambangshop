@@ -66,11 +66,11 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement unsubscribe function in Notification controller.`
     -   [x] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
-    -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
-    -   [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
-    -   [ ] Commit: `Implement publish function in Program service and Program controller.`
-    -   [ ] Commit: `Edit Product service methods to call notify after create/delete.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-3" questions in this README.
+    -   [x] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
+    -   [x] Commit: `Implement notify function in Notification service to notify each Subscriber.`
+    -   [x] Commit: `Implement publish function in Program service and Program controller.`
+    -   [x] Commit: `Edit Product service methods to call notify after create/delete.`
+    -   [x] Write answers of your learning module's "Reflection Publisher-3" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
@@ -94,3 +94,9 @@ This is the place for you to write reflections:
 
 
 #### Reflection Publisher-3
+1. Pada tutorial ini digunakan model **Push**, di mana publisher secara aktif mengirim data ke subscriber. Hal ini terlihat saat `NotificationService::notify` membuat payload lalu langsung mengirimkannya ke semua subscriber melalui HTTP request. Subscriber bersifat pasif karena hanya menerima data saat terjadi event seperti create, publish, atau delete.
+
+2. Jika menggunakan model **Pull**, subscriber bisa mengambil data sesuai kebutuhan sehingga tidak kewalahan saat terjadi banyak event. Namun, kekurangannya adalah kurang efisien untuk notifikasi real-time karena subscriber harus terus melakukan polling ke server, atau publisher harus menyimpan data lebih lama sampai semua subscriber mengambilnya.
+
+3. Tanpa multi-threading (`thread::spawn`), proses notifikasi akan berjalan secara sinkron dan menjadi lambat. Karena pengiriman notifikasi berupa HTTP request membutuhkan waktu, thread utama akan tertahan. Akibatnya, respons ke pengguna menjadi lama karena harus menunggu semua notifikasi selesai dikirim satu per satu.
+
