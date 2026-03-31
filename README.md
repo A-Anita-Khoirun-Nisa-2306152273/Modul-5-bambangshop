@@ -78,6 +78,12 @@ This is the place for you to write reflections:
 ### Mandatory (Publisher) Reflections
 
 #### Reflection Publisher-1
+1. Penggunaan satu model struct sudah mencukupi karena seluruh subscriber memiliki struktur data dan fungsi yang sama, yaitu menerima notifikasi. Penerapan trait atau interface biasanya diperlukan ketika terdapat variasi perilaku (polimorfisme) yang harus mengikuti kontrak tertentu. Dalam kasus ini, kebutuhan tersebut belum ada, sehingga penggunaan trait justru akan menambah kompleksitas tanpa memberikan manfaat yang signifikan.
+
+2. Penggunaan `DashMap` lebih tepat dibandingkan `Vec` karena data subscriber memiliki atribut unik seperti id atau url yang berperan sebagai key. Jika menggunakan `Vec`, setiap operasi pencarian, penghapusan, atau pembaruan harus dilakukan dengan iterasi satu per satu (linear search) yang memiliki kompleksitas O(n), sehingga kurang efisien ketika data semakin banyak. Sebaliknya, `DashMap` memungkinkan akses langsung berdasarkan key dengan kompleksitas rata-rata O(1), sehingga lebih cepat dan efisien.
+
+3. `DashMap` dan pola Singleton bukanlah pilihan yang saling menggantikan, melainkan saling melengkapi. `lazy_static` digunakan untuk memastikan hanya ada satu instance data global (Singleton), sementara `DashMap` memastikan data tersebut aman digunakan dalam lingkungan multi-threading (thread-safe). Dalam aplikasi backend yang menangani banyak request secara bersamaan, penggunaan struktur data yang aman dari data race sangat penting. Jika hanya menggunakan `HashMap` biasa, tetap diperlukan mekanisme tambahan seperti `Mutex` atau `RwLock`, sehingga `DashMap` menjadi solusi yang lebih praktis dan efisien.
+
 
 #### Reflection Publisher-2
 
