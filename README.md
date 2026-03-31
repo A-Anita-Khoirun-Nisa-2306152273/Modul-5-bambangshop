@@ -57,14 +57,14 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [x] Commit: `Implement add function in Subscriber repository.`
     -   [x] Commit: `Implement list_all function in Subscriber repository.`
     -   [x] Commit: `Implement delete function in Subscriber repository.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
+    -   [x] Write answers of your learning module's "Reflection Publisher-1" questions in this README.
 -   **STAGE 2: Implement services and controllers**
-    -   [ ] Commit: `Create Notification service struct skeleton.`
-    -   [ ] Commit: `Implement subscribe function in Notification service.`
-    -   [ ] Commit: `Implement subscribe function in Notification controller.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification service.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
+    -   [x] Commit: `Create Notification service struct skeleton.`
+    -   [x] Commit: `Implement subscribe function in Notification service.`
+    -   [x] Commit: `Implement subscribe function in Notification controller.`
+    -   [x] Commit: `Implement unsubscribe function in Notification service.`
+    -   [x] Commit: `Implement unsubscribe function in Notification controller.`
+    -   [x] Write answers of your learning module's "Reflection Publisher-2" questions in this README.
 -   **STAGE 3: Implement notification mechanism**
     -   [ ] Commit: `Implement update method in Subscriber model to send notification HTTP requests.`
     -   [ ] Commit: `Implement notify function in Notification service to notify each Subscriber.`
@@ -86,5 +86,11 @@ This is the place for you to write reflections:
 
 
 #### Reflection Publisher-2
+1. Pemisahan antara Model, Service, dan Repository merupakan penerapan prinsip Single Responsibility Principle (SRP), di mana setiap komponen memiliki tugas yang jelas. Model hanya berisi struktur data, Repository menangani operasi penyimpanan (CRUD), dan Service mengelola logika bisnis. Dengan pemisahan ini, kode menjadi lebih terstruktur, mudah diuji, dan fleksibel terhadap perubahan, misalnya saat mengganti database tanpa harus mengubah logika utama aplikasi.
+
+2. Jika semua tanggung jawab digabung dalam Model, maka kode akan menjadi kompleks dan sulit dikelola. Model bisa berubah menjadi “God Object” yang menangani terlalu banyak hal sekaligus, seperti mengelola data, mengatur subscriber, hingga mengirim notifikasi. Hal ini membuat perubahan kecil pada satu bagian dapat berdampak ke banyak bagian lain, sehingga meningkatkan risiko error dan menyulitkan pengembangan serta kolaborasi tim.
+
+3. Penggunaan Postman sangat membantu dalam menguji dan memvalidasi API backend karena memungkinkan kita mengirim dan mengecek request HTTP secara langsung tanpa bergantung pada frontend. Fitur seperti Collections dapat digunakan sebagai dokumentasi API yang bisa dibagikan ke tim, sehingga semua anggota memiliki referensi yang sama. Selain itu, Environment Variables memudahkan pengujian di berbagai lingkungan, dan fitur automated testing dapat mempercepat proses pengecekan kualitas aplikasi.
+
 
 #### Reflection Publisher-3
