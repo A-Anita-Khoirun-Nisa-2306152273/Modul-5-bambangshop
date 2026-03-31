@@ -1,4 +1,4 @@
-use reqwest::Url;
+
 use rocket::response::status::Created;
 use rocket::serde::json::Json;
 
