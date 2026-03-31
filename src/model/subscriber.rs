@@ -1,13 +1,14 @@
-use rocket::serde::{Deserialize, Serialize};
-use rocket::log;
-use rocket::serde::json::to_string;
-use rocket::tokio;
-use bambangshop::REQWEST_CLIENT;
-use crate::model::notification::Notification;
+use dashmap::DashMap;
+use lazy_static::lazy_static;
+use crate::model::subscriber::Subscriber;
 
-#[derive(Debug, Clone, Deserialize, Serialize)]
-#[serde(crate = "rocket::serde")]
-pub struct Subscriber {
-    pub url: String,
-    pub name: String,
+// Singleton of Database
+lazy_static! {
+    static ref SUBSCRIBERS: DashMap<String, DashMap<String, Subscriber>> = DashMap::new();
+}
+
+pub struct SubscriberRepository;
+
+impl SubscriberRepository {
+
 }
